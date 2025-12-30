@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Últimas noticias y actualizaciones de XGEOSPACE">
+    <title>Noticias - XGEOSPACE</title>
+    <link rel="icon" type="image/png" href="icono.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .news-hero {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.9), rgba(234, 88, 12, 0.85)), url('img/hero-noticias.jpg') center/cover;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .news-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--background-color), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .news-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 0;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+        }
+
+        .featured-image {
+            position: relative;
+            min-height: 450px;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .featured-article:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: linear-gradient(135deg, #f59e0b, #ea580c);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .featured-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .featured-meta i {
+            color: var(--accent-color);
+        }
+
+        .featured-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-content p {
+            color: var(--secondary-color);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .featured-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent-color), #0284c7);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            width: fit-content;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+        }
+
+        .featured-btn:hover {
+            transform: translateX(5px);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .news-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+
+        .news-date {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-category {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-content h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .news-content p {
+            color: var(--secondary-color);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .news-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 0.6rem;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-color), #1e3a5f);
+            color: white;
+            border-radius: 24px;
+            padding: 4rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .newsletter-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-section p {
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 280px;
+            padding: 1.2rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .newsletter-form button {
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--accent-color), #0284c7);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
+        }
+
+        @media (max-width: 1024px) {
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .news-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .newsletter-section {
+                padding: 2.5rem 1.5rem;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="xgeospace_logo.png" alt="XGEOSPACE Logo" class="logo">
+                <span class="title">XGEOSPACE Company</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <a href="acerca.html" class="nav-link">Acerca de</a>
+                <a href="productos.html" class="nav-link">Productos</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="news-hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-newspaper"></i> Blog & Noticias</span>
+            <h1>Noticias y Actualizaciones</h1>
+            <p>Mantente informado sobre proyectos, avances tecnológicos y novedades del mundo geoespacial.</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="section">
+            <div class="section-container">
+                <!-- Featured Article -->
+                <div class="featured-article">
+                    <div class="featured-image">
+                        <!-- REEMPLAZAR: img/noticia-destacada.jpg -->
+                        <img src="img/GEOVISOR_FINAL.png" alt="Proyecto Piscigranjas"
+                            onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop'">
+                        <span class="featured-badge"><i class="fas fa-star"></i> Destacado</span>
+                    </div>
+                    <div class="featured-content">
+                        <div class="featured-meta">
+                            <span><i class="fas fa-calendar"></i> Diciembre 2025</span>
+                            <span><i class="fas fa-tag"></i> Proyecto</span>
+                        </div>
+                        <h2>Nuevo Geovisor para el Proyecto Piscigranjas</h2>
+                        <p>Implementamos un geovisor interactivo completo para identificar áreas idóneas para
+                            construcción de piscigranjas en el Centro Piscícola de Ingenio. La plataforma incluye
+                            análisis multicriterio, capas WMS y dashboards estadísticos.</p>
+                        <a href="https://idespace-mapa-2b468.web.app/" target="_blank" class="featured-btn">Ver Proyecto
+                            <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- News Grid -->
+                <div class="news-grid">
+                    <!-- Noticia 1 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <!-- REEMPLAZAR: img/noticia1.jpg -->
+                            <img src="img/METADATO_FINAL.png" alt="Catálogo de Metadatos"
+                                onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop'">
+                            <span class="news-date">Dic 2025</span>
+                            <span class="news-category">Proyecto</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Catálogo de Metadatos ISO 19115 en Producción</h3>
+                            <p>Lanzamos el catálogo de metadatos geoespaciales conforme a estándares internacionales.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-author"><i class="fas fa-user"></i> XGEOSPACE</span>
+                                <a href="https://meta-ingenio.web.app/" target="_blank" class="read-more">Leer más <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Noticia 2 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <!-- REEMPLAZAR: img/noticia2.jpg -->
+                            <img src="img/noticia2.jpg" alt="Dashboard Estadístico"
+                                onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop'">
+                            <span class="news-date">Nov 2025</span>
+                            <span class="news-category">Tecnología</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Dashboard Estadístico con Análisis en R</h3>
+                            <p>Implementación de tableros interactivos con visualizaciones dinámicas y análisis
+                                espacial.</p>
+                            <div class="news-footer">
+                                <span class="news-author"><i class="fas fa-user"></i> XGEOSPACE</span>
+                                <a href="documentacion.html" class="read-more">Leer más <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Noticia 3 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <!-- REEMPLAZAR: img/noticia3.jpg -->
+                            <img src="img/pot.jfif" alt="Análisis UEE"
+                                onerror="this.src='https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=300&fit=crop'">
+                            <span class="news-date">Oct 2025</span>
+                            <span class="news-category">Análisis</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Análisis Multicriterio UEE Completado</h3>
+                            <p>Finalizado el análisis de Zonificación Ecológica Económica con índices NDVI, NDMI y SAVI.
+                            </p>
+                            <div class="news-footer">
+                                <span class="news-author"><i class="fas fa-user"></i> XGEOSPACE</span>
+                                <a href="documentacion.html" class="read-more">Leer más <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Noticia 4 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <!-- REEMPLAZAR: img/noticia4.jpg -->
+                            <img src="img/noticia4.jpg" alt="Curso Web GIS"
+                                onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=300&fit=crop'">
+                            <span class="news-date">Sep 2025</span>
+                            <span class="news-category">Capacitación</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Nuevo Curso de Desarrollo Web GIS</h3>
+                            <p>Próximamente lanzaremos el curso completo de geovisores con Leaflet y OpenLayers.</p>
+                            <div class="news-footer">
+                                <span class="news-author"><i class="fas fa-user"></i> XGEOSPACE</span>
+                                <a href="contacto.html" class="read-more">Más info <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Noticia 5 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <!-- REEMPLAZAR: img/noticia5.jpg -->
+                            <img src="img/noticia5.jpg" alt="Google Earth Engine"
+                                onerror="this.src='https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&h=300&fit=crop'">
+                            <span class="news-date">Ago 2025</span>
+                            <span class="news-category">Innovación</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Integración con Imágenes Satelitales</h3>
+                            <p>Nuevas capacidades de procesamiento de imágenes satelitales en la nube.</p>
+                            <div class="news-footer">
+                                <span class="news-author"><i class="fas fa-user"></i> XGEOSPACE</span>
+                                <a href="servicios.html" class="read-more">Leer más <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Noticia 6 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <!-- REEMPLAZAR: img/noticia6.jpg -->
+                            <img src="img/noticia6.jpg" alt="Alianzas"
+                                onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop'">
+                            <span class="news-date">Jul 2025</span>
+                            <span class="news-category">Alianza</span>
+                        </div>
+                        <div class="news-content">
+                            <h3>Alianza Estratégica con Instituciones</h3>
+                            <p>XGEOSPACE firma convenios para proyectos de desarrollo territorial sostenible.</p>
+                            <div class="news-footer">
+                                <span class="news-author"><i class="fas fa-user"></i> XGEOSPACE</span>
+                                <a href="acerca.html" class="read-more">Leer más <i
+                                        class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="newsletter-section">
+                    <h2><i class="fas fa-envelope-open-text"></i> Suscríbete al Boletín</h2>
+                    <p>Recibe las últimas noticias y actualizaciones directamente en tu correo.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i> Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="icono.jpg" alt="XGEOSPACE Logo" class="footer-logo-img">
+                <span class="footer-brand-name">XGEOSPACE</span>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="acerca.html">¿Quiénes somos?</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone-alt"></i> 904 013 678</p>
+                <p><i class="fas fa-envelope"></i> aiquipafelix@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. De la Poesía Nº 351, San Borja, Lima</p>
+            </div>
+            <div class="footer-section social-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://wa.me/51904013678" target="_blank" class="social-btn whatsapp"><i
+                            class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://www.linkedin.com/in/felix-aiquipa-gonzales" target="_blank"
+                        class="social-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 XGEOSPACE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- Chatbot Jarbis -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" aria-label="Abrir chat">
+            <div class="jarbis-avatar-container">
+                <div class="jarbis-ring ring-1"></div>
+                <div class="jarbis-ring ring-2"></div>
+                <div class="jarbis-ring ring-3"></div>
+                <div class="jarbis-core"></div>
+            </div>
+            <span class="chatbot-label">Jarbis AI</span>
+        </button>
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="header-info">
+                    <div class="header-jarbis">
+                        <div class="jarbis-ring ring-1" style="width: 100%; height: 100%;"></div>
+                        <div class="jarbis-ring ring-2" style="width: 70%; height: 70%;"></div>
+                        <div class="jarbis-core" style="width: 40%; height: 40%;"></div>
+                    </div>
+                    <div>
+                        <h4>Jarbis AI</h4>
+                        <span class="status-indicator">Sistema Online</span>
+                    </div>
+                </div>
+                <button class="close-chat" aria-label="Cerrar chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">¿Buscas las últimas actualizaciones sobre geomática y el proyecto
+                        Ingenio?</div>
+                    <span class="message-time">Justo ahora</span>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Consulta a Jarbis..." autocomplete="off">
+                <button id="sendMessage" aria-label="Enviar mensaje"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot_data.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

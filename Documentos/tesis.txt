@@ -1,0 +1,30 @@
+Preguntas Frecuentes sobre la Plataforma de Piscigranjas
+¿Qué función cumple el geovisor en el proyecto?
+Facilita análisis visual de datos espaciales para gestión ambiental y selección de áreas idóneas para piscigranjas.​
+
+¿Qué datos usa el dashboard de R?
+Datos GeoJSON de piscigranjas en UTM 18S, transformados a Lat/Lon para mapas interactivos con Leaflet.​
+
+¿Cuáles son los estados de conservación mostrados?
+Bueno (verde), Regular (amarillo) y Malo (rojo), con valueBoxes y gráficos de distribución.​
+
+¿Qué capas de mapa incluye la plataforma?
+Mapa Oscuro, Satélite (Esri) y Mapa Claro, con control de capas y minimapa.​
+
+¿De dónde provienen los datos de precipitación?
+Catálogo de metadatos del SENAMHI (IDESEP), servicio WMS para análisis hidrológico.​
+
+¿Qué bibliotecas usa el código del dashboard?
+flexdashboard, leaflet, sf, dplyr, plotly y htmltools para visualización geoespacial.​
+
+¿Cuál es el CRS original de los datos?
+EPSG:32718 (UTM zone 18S), transformado a EPSG:4326 para Leaflet.​
+
+¿Qué muestra la tabla de registro detallado?
+Códigos, estados y valores P de las primeras 100 piscigranjas.​
+
+¿Para qué sirve la paleta de colores?
+Asigna #10b981 (Bueno), #f59e0b (Regular) y #ef4444 (Malo) a los marcadores.​
+
+¿Dónde se publica la plataforma final?
+En XGEOSPACE (2025), dominio web interactivo para servicios SIG de geomática.​

@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce a XGEOSPACE - Expertos en análisis geoespacial">
+    <title>Acerca de - XGEOSPACE</title>
+    <link rel="icon" type="image/png" href="icono.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 95, 0.9)), url('img/hero-acerca.jpg') center/cover;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--background-color), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #7dd3fc;
+        }
+
+        .about-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Content */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid var(--accent-color);
+            border-radius: 24px;
+            z-index: -1;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--secondary-color);
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Mission Vision */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), #6366f1);
+        }
+
+        .mv-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-color), #0284c7);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .mv-card h3 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .mv-card p {
+            color: var(--secondary-color);
+            line-height: 1.8;
+        }
+
+        /* Stats */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), #1e3a5f);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .value-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-card p {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .team-image {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+
+        .team-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .team-info h4 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .team-role {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-info p {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid.single-member .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .team-grid.single-member .team-image {
+                width: 100%;
+                height: 300px;
+            }
+
+            .team-grid.single-member .team-info {
+                text-align: center;
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        /* Single Team Member Styling */
+        .team-grid.single-member {
+            display: flex;
+            justify-content: center;
+            grid-template-columns: unset;
+        }
+
+        .team-card.featured-profile {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .team-card.featured-profile .team-image {
+            flex: 1;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .team-card.featured-profile .team-info {
+            flex: 1.5;
+            padding: 3rem;
+            text-align: left;
+        }
+
+        .team-card.featured-profile h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-card.featured-profile .team-role {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            color: var(--accent-color);
+        }
+
+        .team-bio p {
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .team-skills {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .skill-tag {
+            background: #f1f5f9;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .team-card.featured-profile .team-social {
+            justify-content: flex-start;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="xgeospace_logo.png" alt="XGEOSPACE Logo" class="logo">
+                <span class="title">XGEOSPACE Company</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <a href="acerca.html" class="nav-link">Acerca de</a>
+                <a href="productos.html" class="nav-link">Productos</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-users"></i> Conócenos</span>
+            <h1>¿Quiénes Somos?</h1>
+            <p>Expertos en análisis geoespacial, transformando datos territoriales en soluciones innovadoras para el
+                desarrollo sostenible del Perú.</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- About Section -->
+        <section class="section">
+            <div class="section-container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <!-- REEMPLAZAR: img/acerca-equipo.jpg -->
+                        <img src="img/acerca-equipo.jpg" alt="Equipo XGEOSPACE"
+                            onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=500&fit=crop'">
+                    </div>
+                    <div class="about-text">
+                        <h2>Nuestra Historia</h2>
+                        <p>XGEOSPACE nace de la pasión por la tecnología geoespacial y el compromiso con el desarrollo
+                            territorial sostenible. Desde nuestros inicios, hemos trabajado en proyectos que combinan
+                            ciencia de datos con análisis espacial.</p>
+                        <p>Nos especializamos en geovisores interactivos, análisis de imágenes satelitales y la
+                            implementación de infraestructuras de datos espaciales que permiten tomar decisiones basadas
+                            en evidencia geográfica.</p>
+                        <p>Nuestro equipo multidisciplinario combina geomática, desarrollo de software, ciencias
+                            ambientales y acuicultura para ofrecer soluciones integrales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="section" style="background: #f8fafc;">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Misión y Visión</h2>
+                    <p>Nuestro compromiso con la excelencia y la innovación</p>
+                </div>
+                <div class="mv-grid">
+                    <div class="mv-card">
+                        <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+                        <h3>Nuestra Misión</h3>
+                        <p>Desarrollar soluciones geoespaciales innovadoras que impulsen el desarrollo sostenible del
+                            territorio peruano, utilizando tecnología de vanguardia para transformar datos espaciales en
+                            herramientas estratégicas de decisión.</p>
+                    </div>
+                    <div class="mv-card">
+                        <div class="mv-icon"><i class="fas fa-eye"></i></div>
+                        <h3>Nuestra Visión</h3>
+                        <p>Ser reconocidos como líderes en el desarrollo de infraestructuras de datos espaciales en
+                            América Latina, contribuyendo a la gestión inteligente del territorio y al aprovechamiento
+                            sostenible de los recursos naturales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="section stats-section">
+            <div class="section-container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Proyectos Completados</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Clientes Satisfechos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Hectáreas Analizadas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1+</span>
+                        <span class="stat-label">Años de Experiencia</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values -->
+        <section class="section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Nuestros Valores</h2>
+                    <p>Los principios que guían nuestro trabajo</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h4>Innovación</h4>
+                        <p>Buscamos nuevas formas de resolver problemas espaciales</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-award"></i></div>
+                        <h4>Excelencia</h4>
+                        <p>Cada proyecto refleja nuestro compromiso con la calidad</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-leaf"></i></div>
+                        <h4>Sostenibilidad</h4>
+                        <p>Promovemos el desarrollo responsable del territorio</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-handshake"></i></div>
+                        <h4>Compromiso</h4>
+                        <p>Trabajamos para superar las expectativas</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section class="section" style="background: #f8fafc;">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Nuestro Equipo</h2>
+                    <p>Profesionales apasionados por la geomática</p>
+                </div>
+                <div class="team-grid single-member">
+                    <div class="team-card featured-profile">
+                        <div class="team-image">
+                            <!-- REEMPLAZAR: img/equipo1.jpg -->
+                            <img src="img/Felix.enc" alt="Director de Proyectos"
+                                onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=350&fit=crop'">
+                        </div>
+                        <div class="team-info">
+                            <h4>Geom. Felix Aldimar Aiquipa Gonzales</h4>
+                            <p class="team-role">Director de Proyectos GIS & Fundador</p>
+                            <div class="team-bio">
+                                <p>Líder apasionado con amplia experiencia en geomática, análisis espacial y desarrollo
+                                    de soluciones tecnológicas innovadoras. Su visión impulsa a XGEOSPACE hacia la
+                                    excelencia en la gestión territorial.</p>
+                            </div>
+                            <div class="team-skills">
+                                <span class="skill-tag">GIS Expert</span>
+                                <span class="skill-tag">Project Management</span>
+                                <span class="skill-tag">Spatial Analysis</span>
+                            </div>
+                            <div class="team-social">
+                                <a href="https://www.linkedin.com/in/felix-aiquipa-gonzales" target="_blank"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                                <a href="mailto:aiquipafelix@gmail.com"><i class="fas fa-envelope"></i></a>
+                                <a href="https://github.com/FelixAiquipaGonzales" target="_blank"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="icono.jpg" alt="XGEOSPACE Logo" class="footer-logo-img">
+                <span class="footer-brand-name">XGEOSPACE</span>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="acerca.html">¿Quiénes somos?</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone-alt"></i> 904 013 678</p>
+                <p><i class="fas fa-envelope"></i> aiquipafelix@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. De la Poesía Nº 351, San Borja, Lima</p>
+            </div>
+            <div class="footer-section social-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://wa.me/51904013678" target="_blank" class="social-btn whatsapp"><i
+                            class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://www.linkedin.com/in/felix-aiquipa-gonzales" target="_blank"
+                        class="social-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 XGEOSPACE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- Chatbot Jarbis -->
+    <div class="chatbot-container">
+        <!-- Chat Bubble/Button -->
+        <button class="chatbot-toggle" aria-label="Abrir chat">
+            <div class="jarbis-avatar-container">
+                <div class="jarbis-ring ring-1"></div>
+                <div class="jarbis-ring ring-2"></div>
+                <div class="jarbis-ring ring-3"></div>
+                <div class="jarbis-core"></div>
+            </div>
+            <span class="chatbot-label">Jarbis AI</span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="header-info">
+                    <div class="header-jarbis">
+                        <div class="jarbis-ring ring-1" style="width: 100%; height: 100%;"></div>
+                        <div class="jarbis-ring ring-2" style="width: 70%; height: 70%;"></div>
+                        <div class="jarbis-core" style="width: 40%; height: 40%;"></div>
+                    </div>
+                    <div>
+                        <h4>Jarbis AI</h4>
+                        <span class="status-indicator">Sistema Online</span>
+                    </div>
+                </div>
+                <button class="close-chat" aria-label="Cerrar chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hola, soy Jarbis. Sistema de Inteligencia Geoespacial activado. ¿En qué puedo ayudarte?
+                    </div>
+                    <span class="message-time">Justo ahora</span>
+                </div>
+                <!-- Suggested chips will be added by script.js -->
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Consulta a Jarbis..." autocomplete="off">
+                <button id="sendMessage" aria-label="Enviar mensaje">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot_data.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

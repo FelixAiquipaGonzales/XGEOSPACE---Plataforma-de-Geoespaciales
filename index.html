@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Análisis geoespacial avanzado para identificar áreas idóneas para la construcción de piscigranjas en el Perú">
+    <meta name="keywords" content="piscigranjas, acuicultura, análisis geoespacial, XGEOSPACE, geovisor">
+    <meta name="author" content="XGEOSPACE">
+    <title>Áreas idóneas para piscigranjas - XGEOSPACE</title>
+    <link rel="icon" type="image/png" href="icono.jpg" />
+    <!-- Google Fonts: Outfit for a modern, clean look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Preloader Futurista -->
+    <div class="preloader" id="preloader">
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-text">XGEOSPACE SYSTEM</div>
+            <div class="loader-subtext" id="loaderStatus">Inicializando núcleo geoespacial...</div>
+        </div>
+    </div>
+
+    <!-- Barra superior -->
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="#" class="logo-link">
+                <img src="xgeospace_logo.png" alt="XGEOSPACE Logo" class="logo">
+                <span class="title">XGEOSPACE Company</span>
+            </a>
+
+            <button class="mobile-menu-btn" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="main-nav">
+                <a href="acerca.html" class="nav-link">Acerca de</a>
+                <a href="productos.html" class="nav-link">Productos</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section / Title -->
+        <section class="hero-title">
+            <h1>Áreas idóneas para la construcción de piscigranjas</h1>
+            <p class="subtitle">Análisis geoespacial avanzado para el desarrollo acuícola</p>
+        </section>
+
+        <!-- Contenedor principal -->
+        <div class="container">
+            <!-- Imagen satelital grande -->
+            <div class="main-image-wrapper">
+                <div class="image-card flip-card" onclick="toggleFlip(this)">
+                    <div class="flip-card-inner">
+                        <!-- Frente de la tarjeta -->
+                        <div class="flip-card-front">
+                            <img src="IMAGEN_CENTRAL.PNG" alt="Mapa de áreas idóneas">
+                            <div class="image-overlay">
+                                <span><i class="fas fa-map-marked-alt"></i> Vista Satelital (Click para ver
+                                    Dashboard)</span>
+                            </div>
+                        </div>
+                        <!-- Reverso de la tarjeta -->
+                        <div class="flip-card-back">
+                            <button class="close-flip-btn"
+                                onclick="event.stopPropagation(); toggleFlip(event.target.closest('.flip-card'))"
+                                aria-label="Cerrar">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <iframe src="dashboard_piscigranjas.html" title="Dashboard Piscigranjas"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuatro accesos directos -->
+            <div class="grid-links">
+                <a href="documentacion.html" class="link-card docu">
+                    <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="card-content">
+                        <h3>Documentación</h3>
+                        <p>Detalles técnicos del proyecto</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+
+                <a href="https://meta-ingenio.web.app/" class="link-card metadatos">
+                    <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                    <div class="card-content">
+                        <h3>Metadatos</h3>
+                        <p>Perfiles y recursos geoespaciales</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+
+                <a href="https://base-alfa-ingenio.web.app/" class="link-card db" target="_self">
+                    <div class="card-icon"><i class="fas fa-database"></i></div>
+                    <div class="card-content">
+                        <h3>Base de Datos</h3>
+                        <p>Información alfanumérica</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+
+                <a href="https://idespace-mapa-2b468.web.app/" class="link-card geovisor" target="_self">
+                    <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                    <div class="card-content">
+                        <h3>Geovisor</h3>
+                        <p>Exploración interactiva</p>
+                    </div>
+                    <div class="card-arrow"><i class="fas fa-arrow-right"></i></div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="icono.jpg" alt="XGEOSPACE Logo" class="footer-logo-img">
+                <span class="footer-brand-name">XGEOSPACE</span>
+            </div>
+
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="acerca.html">¿Quiénes somos?</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone-alt"></i> 904 013 678</p>
+                <p><i class="fas fa-envelope"></i> aiquipafelix@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. De la Poesía Nº 351, San Borja, Lima, Perú</p>
+            </div>
+
+            <div class="footer-section social-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://wa.me/51904013678?text=Hola%20quiero%20información%20acerca%20del%20proyecto%20construrccion%20de%20piscigranjas%20en%20el%20centro%20piscicola%20de%20ingenio"
+                        target="_blank" class="social-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://www.linkedin.com/in/felix-aiquipa-gonzales" target="_blank"
+                        class="social-btn linkedin">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 XGEOSPACE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Jarbis -->
+    <div class="chatbot-container">
+        <!-- Chat Bubble/Button -->
+        <button class="chatbot-toggle" aria-label="Abrir chat">
+            <div class="jarbis-avatar-container">
+                <div class="jarbis-ring ring-1"></div>
+                <div class="jarbis-ring ring-2"></div>
+                <div class="jarbis-ring ring-3"></div>
+                <div class="jarbis-core"></div>
+            </div>
+            <span class="chatbot-label">Jarbis AI</span>
+        </button>
+
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="header-info">
+                    <div class="header-jarbis">
+                        <div class="jarbis-ring ring-1" style="width: 100%; height: 100%;"></div>
+                        <div class="jarbis-ring ring-2" style="width: 70%; height: 70%;"></div>
+                        <div class="jarbis-core" style="width: 40%; height: 40%;"></div>
+                    </div>
+                    <div>
+                        <h4>Jarbis AI</h4>
+                        <span class="status-indicator">Sistema Online</span>
+                    </div>
+                </div>
+                <button class="close-chat" aria-label="Cerrar chat">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Hola, soy Jarbis. Sistema de Inteligencia Geoespacial activado. ¿En qué puedo ayudarte?
+                    </div>
+                    <span class="message-time">Justo ahora</span>
+                </div>
+
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Consulta a Jarbis..." autocomplete="off">
+                <button id="sendMessage" aria-label="Enviar mensaje">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot_data.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

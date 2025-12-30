@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Servicios de análisis geoespacial y desarrollo GIS de XGEOSPACE">
+    <title>Servicios - XGEOSPACE</title>
+    <link rel="icon" type="image/png" href="icono.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .services-hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 95, 0.9)), url('img/hero-servicios.jpg') center/cover;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--background-color), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(14, 165, 233, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: #7dd3fc;
+        }
+
+        .services-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #7dd3fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .services-hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-image {
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), #0284c7);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            margin-top: -50px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: var(--secondary-color);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+
+        .service-features li i {
+            color: #10b981;
+            font-size: 0.9rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: linear-gradient(135deg, #0f172a, #1e3a5f);
+            color: white;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.5), transparent);
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--accent-color), #0284c7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 40px rgba(14, 165, 233, 0.4);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+
+        .process-step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .process-step p {
+            opacity: 0.8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(99, 102, 241, 0.1));
+            text-align: center;
+        }
+
+        .cta-card {
+            background: white;
+            border-radius: 24px;
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-card h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .cta-card p {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--accent-color), #0284c7);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .cta-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <img src="xgeospace_logo.png" alt="XGEOSPACE Logo" class="logo">
+                <span class="title">XGEOSPACE Company</span>
+            </a>
+            <button class="mobile-menu-btn" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <a href="acerca.html" class="nav-link">Acerca de</a>
+                <a href="productos.html" class="nav-link">Productos</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="services-hero">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-rocket"></i> Soluciones Profesionales</span>
+            <h1>Nuestros Servicios</h1>
+            <p>Transformamos datos geoespaciales en decisiones estratégicas mediante tecnología de vanguardia y
+                experiencia especializada.</p>
+        </div>
+    </section>
+
+    <main>
+        <section class="section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Servicios Especializados</h2>
+                    <p>Soluciones integrales adaptadas a las necesidades de tu proyecto</p>
+                </div>
+                <div class="services-grid">
+                    <!-- Servicio 1 -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <!-- REEMPLAZAR: img/servicio1.jpg -->
+                            <img src="img/TELEDETECCION.jpg" alt="Análisis de Imágenes Satelitales"
+                                onerror="this.src='https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&h=400&fit=crop'">
+                            <div class="service-overlay"></div>
+                            <span class="service-number">01</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-satellite"></i></div>
+                            <h3>Análisis de Imágenes Satelitales</h3>
+                            <p>Procesamiento avanzado de imágenes para estudios ambientales y monitoreo territorial.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Índices espectrales NDVI, NDMI, SAVI</li>
+                                <li><i class="fas fa-check"></i> Clasificación de coberturas</li>
+                                <li><i class="fas fa-check"></i> Análisis multitemporal</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 2 -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <!-- REEMPLAZAR: img/servicio2.jpg -->
+                            <img src="img/GEOPORTAL.png" alt="Desarrollo de Geovisores"
+                                onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'">
+                            <div class="service-overlay"></div>
+                            <span class="service-number">02</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-globe"></i></div>
+                            <h3>Desarrollo de Geovisores</h3>
+                            <p>Plataformas web interactivas para visualización de información geográfica.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Geovisores personalizados</li>
+                                <li><i class="fas fa-check"></i> Integración WMS/WFS</li>
+                                <li><i class="fas fa-check"></i> Consultas espaciales</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 3 -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <!-- REEMPLAZAR: img/servicio3.jpg -->
+                            <img src="img/servicio3.jpg" alt="Infraestructura de Datos"
+                                onerror="this.src='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop'">
+                            <div class="service-overlay"></div>
+                            <span class="service-number">03</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-database"></i></div>
+                            <h3>Infraestructura de Datos Espaciales</h3>
+                            <p>Diseño e implementación de IDE para gestión centralizada de información.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Catálogos ISO 19115</li>
+                                <li><i class="fas fa-check"></i> Servicios OGC</li>
+                                <li><i class="fas fa-check"></i> Bases de datos espaciales</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 4 -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <!-- REEMPLAZAR: img/servicio4.jpg -->
+                            <img src="img/servicio4.jpg" alt="Análisis Multicriterio"
+                                onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop'">
+                            <div class="service-overlay"></div>
+                            <span class="service-number">04</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>Análisis Multicriterio</h3>
+                            <p>Evaluación de aptitud territorial mediante técnicas avanzadas de análisis espacial.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Modelamiento de idoneidad</li>
+                                <li><i class="fas fa-check"></i> Análisis jerárquico AHP</li>
+                                <li><i class="fas fa-check"></i> Zonificación ZEE</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 5 -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <!-- REEMPLAZAR: img/servicio5.jpg -->
+                            <img src="img/servicio5.jpg" alt="Capacitación GIS"
+                                onerror="this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop'">
+                            <div class="service-overlay"></div>
+                            <span class="service-number">05</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h3>Capacitación GIS</h3>
+                            <p>Programas de formación en software GIS y desarrollo de aplicaciones geoespaciales.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> QGIS y ArcGIS Pro</li>
+                                <li><i class="fas fa-check"></i> Google Earth Engine</li>
+                                <li><i class="fas fa-check"></i> Desarrollo Web GIS</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 6 -->
+                    <div class="service-card">
+                        <div class="service-image">
+                            <!-- REEMPLAZAR: img/servicio6.jpg -->
+                            <img src="img/servicio6.jpg" alt="Consultoría GIS"
+                                onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop'">
+                            <div class="service-overlay"></div>
+                            <span class="service-number">06</span>
+                        </div>
+                        <div class="service-content">
+                            <div class="service-icon"><i class="fas fa-users-cog"></i></div>
+                            <h3>Consultoría GIS</h3>
+                            <p>Asesoramiento técnico para optimización de flujos de trabajo y proyectos.</p>
+                            <ul class="service-features">
+                                <li><i class="fas fa-check"></i> Diagnóstico y planificación</li>
+                                <li><i class="fas fa-check"></i> Optimización de procesos</li>
+                                <li><i class="fas fa-check"></i> Acompañamiento técnico</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section process-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 style="color: white;">Nuestro Proceso</h2>
+                    <p style="color: rgba(255,255,255,0.8);">Metodología estructurada para resultados excepcionales</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-circle">
+                            <i class="fas fa-search"></i>
+                            <span class="step-number">1</span>
+                        </div>
+                        <h4>Diagnóstico</h4>
+                        <p>Análisis profundo de requerimientos y objetivos</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-circle">
+                            <i class="fas fa-pencil-ruler"></i>
+                            <span class="step-number">2</span>
+                        </div>
+                        <h4>Diseño</h4>
+                        <p>Arquitectura técnica y planificación detallada</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-circle">
+                            <i class="fas fa-code"></i>
+                            <span class="step-number">3</span>
+                        </div>
+                        <h4>Desarrollo</h4>
+                        <p>Implementación con metodologías ágiles</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-circle">
+                            <i class="fas fa-rocket"></i>
+                            <span class="step-number">4</span>
+                        </div>
+                        <h4>Entrega</h4>
+                        <p>Despliegue, capacitación y soporte continuo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section cta-section">
+            <div class="section-container">
+                <div class="cta-card">
+                    <h2>¿Tienes un Proyecto en Mente?</h2>
+                    <p>Cuéntanos sobre tus necesidades y trabajemos juntos en una solución a medida.</p>
+                    <a href="contacto.html" class="cta-btn"><i class="fas fa-envelope"></i> Solicitar Cotización</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="icono.jpg" alt="XGEOSPACE Logo" class="footer-logo-img">
+                <span class="footer-brand-name">XGEOSPACE</span>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="acerca.html">¿Quiénes somos?</a></li>
+                    <li><a href="servicios.html">Servicios</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-phone-alt"></i> 904 013 678</p>
+                <p><i class="fas fa-envelope"></i> aiquipafelix@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Av. De la Poesía Nº 351, San Borja, Lima</p>
+            </div>
+            <div class="footer-section social-section">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://wa.me/51904013678" target="_blank" class="social-btn whatsapp"><i
+                            class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://www.linkedin.com/in/felix-aiquipa-gonzales" target="_blank"
+                        class="social-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 XGEOSPACE. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <!-- Chatbot Jarbis -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" aria-label="Abrir chat">
+            <div class="jarbis-avatar-container">
+                <div class="jarbis-ring ring-1"></div>
+                <div class="jarbis-ring ring-2"></div>
+                <div class="jarbis-ring ring-3"></div>
+                <div class="jarbis-core"></div>
+            </div>
+            <span class="chatbot-label">Jarbis AI</span>
+        </button>
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="header-info">
+                    <div class="header-jarbis">
+                        <div class="jarbis-ring ring-1" style="width: 100%; height: 100%;"></div>
+                        <div class="jarbis-ring ring-2" style="width: 70%; height: 70%;"></div>
+                        <div class="jarbis-core" style="width: 40%; height: 40%;"></div>
+                    </div>
+                    <div>
+                        <h4>Jarbis AI</h4>
+                        <span class="status-indicator">Sistema Online</span>
+                    </div>
+                </div>
+                <button class="close-chat" aria-label="Cerrar chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <div class="message-content">Bienvenido a Servicios. Pregúntame sobre Geovisores, Imágenes
+                        Satelitales o Dashboards en R.</div>
+                    <span class="message-time">Justo ahora</span>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Consulta a Jarbis..." autocomplete="off">
+                <button id="sendMessage" aria-label="Enviar mensaje"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="chatbot_data.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

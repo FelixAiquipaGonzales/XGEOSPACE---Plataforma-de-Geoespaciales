@@ -1,0 +1,330 @@
+/* --- Tus estilos existentes --- */
+
+/* Responsividad para pantallas pequeñas (menos de 480px) */
+@media only screen and (max-width: 480px) {
+
+  /* Ajustar padding del main para que no sea tan grande */
+  main {
+    padding: 20px !important;
+  }
+
+  /* Section ocupa casi todo el ancho */
+  section {
+    width: 90% !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+  }
+
+  /* Imagen: centrar y ajustar tamaño */
+  .imagen {
+    display: flex !important;
+    justify-content: center !important;
+    margin-left: 0 !important;
+    margin-top: 20px !important; /* quitar margen negativo y agregar espacio */
+    max-width: 90% !important;
+  }
+
+  .imagen img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+  }
+
+  /* Header: centrar contenido y ajustar logo */
+  header {
+    flex-direction: column !important;
+    padding: 15px !important;
+  }
+
+  header img {
+    margin: 0 0 10px 0 !important;
+    width: 180px !important;
+  }
+
+  /* Nav: más espaciado vertical */
+  nav ul {
+    margin: 20px 0 0 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  nav ul li {
+    margin: 10px 0 !important;
+  }
+}
+
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+video#video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  background-color: #05050D;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+header img {
+  width: 270px; /* Ajusta el tamaño del logo según tus necesidades */
+  margin-right: 10px; /* Espacio entre el logo y el texto */
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 40px;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 40px;
+}
+
+nav ul li:last-child {
+  margin-right: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  padding: 150px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+section {
+  text-align: center;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  width: 40%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.imagen {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+  margin-top: -420px;
+  max-width: 40%;
+}
+
+.imagen img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  box-sizing: border-box;
+}
+
+/* Media Queries para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+  header {
+    padding: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    display: block;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  main {
+    padding: 10px;
+  }
+}
+
+/* --- Nuevos estilos para menú hamburguesa --- */
+
+/* Botón hamburguesa */
+.hamburger {
+  display: none; /* Oculto en desktop */
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 10px;
+}
+
+/* Mostrar botón hamburguesa en pantallas pequeñas */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  /* Ocultar menú por defecto */
+  nav ul {
+    display: none !important;
+    position: absolute;
+    top: 70px; /* Ajusta según altura del header */
+    right: 10px;
+    background-color: rgba(5, 5, 13, 0.95);
+    flex-direction: column !important;
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+    margin: 0 !important;
+  }
+
+  /* Mostrar menú cuando tenga clase 'show' */
+  nav ul.show {
+    display: flex !important;
+  }
+
+  nav ul li {
+    margin: 10px 0 !important;
+    padding: 0 20px;
+  }
+
+  /* Ajustar sección e imagen para móviles */
+
+  main {
+    padding: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  section {
+    width: 100% !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    box-sizing: border-box;
+  }
+
+  .imagen {
+    margin-top: 20px !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .imagen img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+}
+/* --- Solo media queries para móviles --- */
+@media only screen and (max-width: 768px) {
+
+  /* Ajustar padding y ancho del main para móviles */
+  main {
+    padding: 20px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Secciones ocupan todo el ancho con padding cómodo */
+  section {
+    width: 100% !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+    box-sizing: border-box;
+  }
+
+  /* Imagen centrada y sin margen negativo */
+  .imagen {
+    margin-top: 20px !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .imagen img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* Header: permitir que los elementos se acomoden */
+  header {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Logo más pequeño y centrado */
+  header img {
+    width: 180px !important;
+    margin: 0 0 10px 0 !important;
+  }
+
+  /* Navegación vertical y centrada */
+  nav ul {
+    flex-direction: column !important;
+    margin: 20px 0 0 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+  }
+
+  nav ul li {
+    margin: 10px 0 !important;
+  }
+
+  /* Mostrar botón hamburguesa */
+  .hamburger {
+    display: block !important;
+  }
+
+  /* Ocultar menú por defecto */
+  nav ul {
+    display: none !important;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: rgba(5, 5, 13, 0.95);
+    width: 200px;
+    padding: 10px 0;
+    border-radius: 0 0 0 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 1000;
+  }
+
+  /* Mostrar menú cuando tenga clase 'show' */
+  nav ul.show {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+}
+
+/* --- En desktop el botón hamburguesa está oculto --- */
+.hamburger {
+  display: none;
+}
