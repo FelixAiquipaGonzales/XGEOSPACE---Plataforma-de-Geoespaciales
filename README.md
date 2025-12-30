@@ -6,11 +6,11 @@
   <br />
 
   # 🌍 XGEOSPACE Platform
-  ### Inteligencia Geoespacial para la Acuicultura Sostenible en los Andes
+  ### Determinar las áreas idóneas para la construcción de piscigranjas en el centro Piscícola Ingenio de la provincia de Huancayo
 
   [![Version](https://img.shields.io/badge/version-2.0.0-blue.svg?style=for-the-badge&logo=appveyor)](https://github.com/tu-usuario/xgeospace)
   [![Status](https://img.shields.io/badge/status-active-success.svg?style=for-the-badge&logo=git)](https://github.com/tu-usuario/xgeospace)
-  [![Web](https://img.shields.io/badge/website-online-green.svg?style=for-the-badge&logo=google-chrome)](https://idespace-mapa-2b468.web.app/)
+  [![Web](https://img.shields.io/badge/website-online-green.svg?style=for-the-badge&logo=google-chrome)](https://xgeospace.web.app/)
   [![License](https://img.shields.io/badge/license-Proprietary-red.svg?style=for-the-badge&logo=law)](LICENSE)
 
   <br />
@@ -79,12 +79,12 @@ XGEOSPACE/
 <div align="center">
   <table>
     <tr>
-      <td align="center"><strong>Geovisor</strong></td>
-      <td align="center"><strong>Dashboard</strong></td>
+      <td align="center"><strong>Geovisor Final</strong></td>
+      <td align="center"><strong>Metadatos & Análisis</strong></td>
     </tr>
     <tr>
-      <td><img src="https://via.placeholder.com/400x200?text=Geovisor+Map" alt="Geovisor" /></td>
-      <td><img src="https://via.placeholder.com/400x200?text=Analytics+View" alt="Dashboard" /></td>
+      <td><img src="img/GEOVISOR_FINAL.png" alt="Geovisor" width="400" /></td>
+      <td><img src="img/METADATO_FINAL.png" alt="Dashboard" width="400" /></td>
     </tr>
   </table>
 </div>
